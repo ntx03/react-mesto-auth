@@ -1,0 +1,9 @@
+.popup__container-deletion {
+    height: 181px;
+}
+
+@media (max-width: 690px) {
+    .popup__container-deletion {
+        height: 161px;
+    }
+}

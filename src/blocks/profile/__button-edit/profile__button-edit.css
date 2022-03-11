@@ -1,0 +1,32 @@
+.profile__button-edit {
+    padding: 11px;
+    background-image: url(../../../images/paints.svg);
+    border: #ffffff 1px solid;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgba(0, 0, 0, 1);
+    grid-area: profile__button-edit;
+
+
+}
+
+@media (max-width: 768px) {
+    .profile__button-edit {
+        margin-top: auto;
+        margin-bottom: 18px;
+    }
+}
+
+@media (max-width: 400px) {
+    .profile__button-edit {
+        margin-bottom: 15px;
+        padding: 8px;
+        background-size: 7px;
+    }
+}
+
+.profile__button-edit:hover {
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 0.5s;
+}

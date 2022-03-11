@@ -1,0 +1,23 @@
+.footer {
+    color: #545454;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 67px;
+    padding-bottom: 60px;
+    text-align: start;
+    max-width: 880px;
+}
+
+@media (max-width:950px) {
+    .footer {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+@media (max-width:400px) {
+    .footer {
+        margin-top: 48px;
+        padding-bottom: 35px;
+    }
+}

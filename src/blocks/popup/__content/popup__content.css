@@ -1,0 +1,18 @@
+.popup__content {
+    display: flex;
+    flex-direction: column;
+    max-width: 358px;
+    margin-bottom: 37px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 690px) {
+    .popup__content {
+        margin-right: 22px;
+        margin-left: 22px;
+        max-width: 282px;
+        margin-top: 26px;
+        margin-bottom: 27px;
+    }
+}

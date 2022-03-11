@@ -1,0 +1,18 @@
+.popup__container {
+    margin: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 430px;
+    height: 330px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 690px) {
+    .popup__container {
+        max-width: 282px;
+        max-height: 320px;
+    }
+}

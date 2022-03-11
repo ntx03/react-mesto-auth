@@ -1,0 +1,9 @@
+.popup__container-avatar {
+    height: 272px;
+}
+
+@media (max-width: 690px) {
+    .popup__container-avatar {
+        height: 236px;
+    }
+}

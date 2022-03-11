@@ -1,0 +1,19 @@
+.card__heart {
+    min-width: 22px;
+    height: 19px;
+    margin-left: auto;
+    margin-right: 4px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    background-image: url(../../../images/heart_no_like.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    background-color: #ffffff;
+}
+
+.card__heart:hover {
+    cursor: pointer;
+    opacity: 0.5;
+    transition: 0.5s;
+}

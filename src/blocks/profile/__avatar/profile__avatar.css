@@ -1,0 +1,18 @@
+.profile__avatar {
+    background-repeat: no-repeat;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 50%;
+    padding-left: 0px;
+    padding-right: 0px;
+    position: relative;
+}
+
+@media (max-width:400px) {
+    .profile__avatar {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

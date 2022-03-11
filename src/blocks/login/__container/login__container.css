@@ -1,0 +1,9 @@
+.login__container {
+    margin: auto;
+    margin-top: 60px;
+    margin-bottom: 80px;
+    width: 358px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red;
+}
