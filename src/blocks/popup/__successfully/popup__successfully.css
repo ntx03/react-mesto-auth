@@ -1,0 +1,11 @@
+.popup__successfully {
+    width: 120px;
+    height: 120px;
+    margin: 60px auto 0 auto;
+}
+
+@media (max-width: 690px) {
+    .popup__successfully {
+        margin: 24px auto 0 auto;
+    }
+}

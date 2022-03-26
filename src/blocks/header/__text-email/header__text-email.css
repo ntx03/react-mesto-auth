@@ -1,4 +1,4 @@
-.header__text {
+.header__text-email {
     margin: 0;
     font-family: inter, 'Helvetica Neue', 'Arial', sans-serif;
     font-size: 18px;
@@ -11,13 +11,8 @@
 }
 
 @media (max-width: 400px) {
-    .header__text {
+    .header__text-email {
         font-size: 14px;
         line-height: 17px;
     }
-}
-
-.header__text:hover {
-    opacity: 0.6;
-    transition: 0.5s;
 }

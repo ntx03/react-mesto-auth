@@ -17,7 +17,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
 
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
-
+    // оживляем инпуты поапап профиля(можно вводить данные)
     const onChangeName = (e) => {
         setName(e.target.value)
     }

@@ -5,14 +5,13 @@ import { useState } from "react"
 function EditAvararPopup({ isOpen, onClose, onUpdateAvatar }) {
 
     const [avatar, setName] = useState('')
-
+    // оживляем инпут попапа аватара
     const onChangeAvatar = (e) => {
         setName(e.target.value)
     }
-
+    // функция замены аватара
     function handleSubmit(e) {
         e.preventDefault();
-
         onUpdateAvatar({
             avatar: avatar,
         });

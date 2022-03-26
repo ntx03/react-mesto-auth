@@ -5,5 +5,11 @@
     width: 358px;
     display: flex;
     flex-direction: column;
-    border: 1px solid red;
+}
+
+@media (max-width: 400px) {
+    .login__container {
+        width: 260px;
+        margin-top: 45px;
+    }
 }

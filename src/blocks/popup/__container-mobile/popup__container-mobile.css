@@ -1,0 +1,6 @@
+@media (max-width:690px) {
+    .popup__container-mobile {
+        max-height: 308px;
+
+    }
+}

@@ -1,4 +1,4 @@
-.header__text {
+.login__button {
     margin: 0;
     font-family: inter, 'Helvetica Neue', 'Arial', sans-serif;
     font-size: 18px;
@@ -6,18 +6,20 @@
     line-height: 22px;
     font-style: normal;
     text-decoration: none;
-    color: #FFFFFF;
-    padding-top: 8px;
+    width: 358px;
+    height: 50px;
+    margin: 186px auto 15px auto;
 }
 
 @media (max-width: 400px) {
-    .header__text {
-        font-size: 14px;
-        line-height: 17px;
+    .login__button {
+        width: 260px;
+        margin: 143px auto 15px auto;
     }
 }
 
-.header__text:hover {
+.login__button:hover {
     opacity: 0.6;
     transition: 0.5s;
+    cursor: pointer;
 }

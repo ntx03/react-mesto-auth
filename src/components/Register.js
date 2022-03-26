@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 
 
-function Login({ onLogin }) {
-
+function Register({ onRegister }) {
     const [email, setEmail] = useState('');
     const onChangeEmail = (e) => {
         setEmail(e.target.value)
@@ -12,38 +12,38 @@ function Login({ onLogin }) {
     const onChangePassword = (e) => {
         setPassword(e.target.value)
     }
-    // собираем данные с инпутов 
+    // собираем данные с инпутов и очищаем поля
     const handleSubmit = (e) => {
         e.preventDefault()
-        onLogin(password, email);
+        onRegister(password, email);
+        setEmail('');
+        setPassword('');
     }
-
 
     return (
         <div className="page">
             <div className="login__container">
                 <form className="login__content" onSubmit={handleSubmit}>
-                    <h2 className="login__title">Вход</h2>
+                    <h2 className="login__title">Регистрация</h2>
                     <div className="login__text-container">
-                        <input id="email" type="email" required placeholder="email" onChange={onChangeEmail}
-                            minLength="2" maxLenght="40"
-                            value={email || ''} name="email" className="login__text" />
+                        <input id="Email" type="email" required placeholder="Email"
+                            minLength="2" maxLenght="40" onChange={onChangeEmail}
+                            value={email || ''} name="Email" className="login__text" />
                         <span id="name-error" className="popup__error-message"></span>
                     </div>
                     <div className="popup__text-container">
-                        <input id="password" type="password" placeholder="пароль" onChange={onChangePassword}
+                        <input id="Password" type="password" placeholder="password" onChange={onChangePassword}
                             minLength="2" maxLenght="200" required
                             value={password || ''} name="password"
                             className="login__text " />
                         <span id="about_me-error" className="popup__error-message"></span>
                     </div>
-                    <button className="login__button" type="submit">Войти</button>
+                    <button className="login__button" type="submit">Зарегистрироваться</button>
                 </form>
-
+                <Link to='/sign-in' className="login__text login__enter">Уже зарегистрированы? Войти</Link>
             </div>
         </div>
-
     );
 }
 
-export default Login;
+export default Register;
