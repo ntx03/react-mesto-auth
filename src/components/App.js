@@ -32,20 +32,6 @@ function App() {
 
   const history = useHistory();
 
-  // получаем данные от сервера информацию о себе и карточки
-  useEffect(() => {
-    api.getUserInfo()
-      .then((data) => {
-        setCurrentUser(data)
-      })
-      .catch(e => console.log(e))
-    api.getInitialCards()
-      .then((data) => {
-        setCards(data)
-      })
-      .catch(err => console.log(err))
-  }, [])
-
   // проверяем токен при открытии приложения 
   useEffect(() => {
     if (localStorage.getItem('token')) {
@@ -64,6 +50,22 @@ function App() {
     }
   }, [])
 
+  // получаем данные от сервера информацию о себе и карточки
+  useEffect(
+    () => {
+      if (loggedIn) {
+        api.getUserInfo()
+          .then((data) => {
+            setCurrentUser(data)
+          })
+          .catch(e => console.log(e))
+        api.getInitialCards()
+          .then((data) => {
+            setCards(data)
+          })
+          .catch(err => console.log(err))
+      }
+    }, [loggedIn])
 
   // функция установки лайков
   function handleCardLike(card) {
@@ -153,7 +155,10 @@ function App() {
           })
           .catch((e) => console.log(e.message))
       })
-      .catch((e) => console.log(e.message));
+      .catch(() => {
+        setIsInfoTooltipOpen(true);
+        setRegistration(false);
+      });
   }
 
   // функция регистрация
@@ -175,6 +180,8 @@ function App() {
   const exitProfile = () => {
     setLoggedIn(false);
     setEmail('');
+    history.push('/sign-in');
+    localStorage.removeItem('token');
   }
 
   return (
