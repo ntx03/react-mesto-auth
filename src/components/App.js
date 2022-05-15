@@ -67,6 +67,21 @@ function App() {
       }
     }, [loggedIn])
 
+  // закрытие попапа по экскепу
+  useEffect(() => {
+    if (isEditProfilePopupOpen || isAddPlacePopupOpen ||
+      isEditAvatarPopupOpen || isInfoTooltipOpen || selectedCard) {
+      const closePopupEsc = (evt) => {
+        if (evt.key === 'Escape') {
+          document.removeEventListener('keydown', closePopupEsc);
+          closeAllPopups();
+        }
+      }
+      document.addEventListener('keydown', closePopupEsc);
+    }
+  }, [isEditProfilePopupOpen, isAddPlacePopupOpen, isEditAvatarPopupOpen,
+    isInfoTooltipOpen, selectedCard])
+
   // функция установки лайков
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
@@ -144,16 +159,10 @@ function App() {
   // функция входа на страничку
   function onLogin(password, email) {
     authorize(password, email)
-      .then((res) => {
-        console.log(res);
+      .then(() => {
         setLoggedIn(true);
         history.push('/');
-        // запрашиваем почту с которой заходят на страничку
-        getContent(res.token)
-          .then((res) => {
-            setEmail(res.data.email);
-          })
-          .catch((e) => console.log(e.message))
+        setEmail(email);
       })
       .catch(() => {
         setIsInfoTooltipOpen(true);
@@ -200,7 +209,7 @@ function App() {
               onCardDelete={handleCardDelete}
               onCardLike={handleCardLike}
               cards={cards}
-              onEditPopupImage={handleCardClick} ></ProtectedRoute>
+              onEditPopupImage={handleCardClick}></ProtectedRoute>
             <Route path="/sign-in">
               <Login onLogin={onLogin} />
             </Route>
@@ -217,11 +226,10 @@ function App() {
         <AddPlasePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlase={handleAddPlace} />
         <EditAvararPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
         <ImagePopup onClose={closeAllPopups} card={selectedCard} />
-        <InfoTooltip isOpen={isInfoTooltipOpen} onClose={closeAllPopups} isRegistration={registration} />
+        <InfoTooltip isOpen={isInfoTooltipOpen} onClose={closeAllPopups} isRegistration={registration} textOk={"Вы успешно зарегистрировались!"} textError={"Что-то пошло не так! Попробуйте еще раз."} />
       </div>
     </CurrentUserContext.Provider>
   );
 }
-
 
 export default App;

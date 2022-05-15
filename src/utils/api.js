@@ -12,7 +12,7 @@ class Api {
 
     //получаем список всех карточек
     getInitialCards() {
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-34/cards', {
+        return fetch('ntx033.kachur.nomoreparties.sbs/cards', {
             method: 'GET',
             headers: this._headers
         })
@@ -22,7 +22,7 @@ class Api {
 
     //получаем информацию пользователя
     getUserInfo() {
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-34/users/me', {
+        return fetch('ntx033.kachur.nomoreparties.sbs/users/me', {
             method: 'GET',
             headers: this._headers
         })
@@ -39,7 +39,7 @@ class Api {
             }),
 
         }
-        return fetch(`https://mesto.nomoreparties.co/v1/cohort-34/users/me/avatar`, newConfing)
+        return fetch(`ntx033.kachur.nomoreparties.sbs/users/me/avatar`, newConfing)
             .then(this._checkError);
     }
 
@@ -49,7 +49,7 @@ class Api {
             headers: this._headers,
             method: 'DELETE',
         }
-        return fetch(`https://mesto.nomoreparties.co/v1/cohort-34/cards/${cardId}`, newConfing)
+        return fetch(`ntx033.kachur.nomoreparties.sbs/cards/${cardId}`, newConfing)
             .then(this._checkError);
     }
 
@@ -64,7 +64,7 @@ class Api {
             headers: this._headers,
             method: 'DELETE',
         }
-        return fetch(`https://mesto.nomoreparties.co/v1/cohort-34/cards/likes/${cardId}`, isLiked ? deleteLike : updateLike)
+        return fetch(`ntx033.kachur.nomoreparties.sbs/cards/likes/${cardId}`, isLiked ? deleteLike : updateLike)
             .then(this._checkError);
     }
 
@@ -75,7 +75,7 @@ class Api {
             headers: this._headers,
             body: JSON.stringify(userData),
         }
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-34/users/me', newConfing)
+        return fetch('ntx033.kachur.nomoreparties.sbs/users/me', newConfing)
             .then(this._checkError);
     }
 
@@ -87,13 +87,13 @@ class Api {
             body: JSON.stringify(inputsValue),
 
         }
-        return fetch('https://mesto.nomoreparties.co/v1/cohort-34/cards', newConfing)
+        return fetch('ntx033.kachur.nomoreparties.sbs/cards', newConfing)
             .then(this._checkError);
     }
 }
 
 export default new Api({
-    baseUrl: `https://mesto.nomoreparties.co/v1/cohort-34`,
+    baseUrl: `ntx033.kachur.nomoreparties.sbs`,
     headers: {
         authorization: '5f5add00-d466-4f85-8d24-2991878e59c1',
         'Content-Type': 'application/json'
