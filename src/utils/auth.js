@@ -1,4 +1,4 @@
-export const BASE_URL = 'ntx033.kachur.nomoreparties.sbs';
+export const BASE_URL = 'http://back.kachur.nomoreparties.sbs';
 
 export const register = (password, email) => {
     return fetch(`${BASE_URL}/signup`, {
