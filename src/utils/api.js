@@ -1,7 +1,6 @@
 class Api {
     constructor(config) {
         this._headers = config.headers
-        console.log(this._headers);
     }
 
     _checkError(res) {
@@ -15,7 +14,10 @@ class Api {
     getInitialCards() {
         return fetch('http://back.kachur.nomoreparties.sbs/cards', {
             method: 'GET',
-            headers: this._headers,
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+            },
         })
             .then(this._checkError);
     }
@@ -25,7 +27,10 @@ class Api {
     getUserInfo() {
         return fetch('http://back.kachur.nomoreparties.sbs/users/me', {
             method: 'GET',
-            headers: this._headers,
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+            },
         })
             .then(this._checkError);
     }
@@ -47,22 +52,31 @@ class Api {
     // удаляем карточку
     removeCard(cardId) {
         const newConfing = {
-            headers: this._headers,
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+            },
             method: 'DELETE',
         }
-        return fetch(`http://back.kachur.nomoreparties.sbs/${cardId}/likes`, newConfing)
+        return fetch(`http://back.kachur.nomoreparties.sbs/cards/${cardId}`, newConfing)
             .then(this._checkError);
     }
 
     // ставим и удаляем лайк 
     changeLikeCardStatus(cardId, isLiked) {
         const updateLike = {
-            headers: this._headers,
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+            },
             method: 'PUT',
         }
 
         const deleteLike = {
-            headers: this._headers,
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+            },
             method: 'DELETE',
         }
         return fetch(`http://back.kachur.nomoreparties.sbs/cards/${cardId}/likes`, isLiked ? deleteLike : updateLike)
@@ -73,7 +87,10 @@ class Api {
     patchProfileInfo(userData) {
         const newConfing = {
             method: 'PATCH',
-            headers: this._headers,
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+            },
             body: JSON.stringify(userData),
         }
         return fetch('http://back.kachur.nomoreparties.sbs/users/me', newConfing)
@@ -84,7 +101,10 @@ class Api {
     patchCard(inputsValue) {
         const newConfing = {
             method: 'POST',
-            headers: this._headers,
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+            },
             body: JSON.stringify(inputsValue),
 
         }

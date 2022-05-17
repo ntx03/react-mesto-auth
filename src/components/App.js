@@ -48,7 +48,7 @@ function App() {
           .catch((e) => console.log(e.message))
       }
     }
-  }, [])
+  }, [history])
 
   // получаем данные от сервера информацию о себе и карточки
   useEffect(
@@ -117,7 +117,7 @@ function App() {
   const handleUpdateUser = (userData) => {
     api.patchProfileInfo(userData)
       .then((data) => {
-        setCurrentUser(data.data) // !!!
+        setCurrentUser(data)
         closeAllPopups()
       })
       .catch(err => console.log(err));
@@ -161,8 +161,8 @@ function App() {
     authorize(password, email)
       .then(() => {
         setLoggedIn(true);
-        history.push('/');
         setEmail(email);
+        history.push('/');
       })
       .catch(() => {
         setIsInfoTooltipOpen(true);
