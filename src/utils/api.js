@@ -12,7 +12,7 @@ class Api {
 
     //получаем список всех карточек
     getInitialCards() {
-        return fetch('back.kachur.nomoreparties.sbs/cards', {
+        return fetch('http://back.kachur.nomoreparties.sbs/cards', {
             method: 'GET',
             headers: this._headers
         })
@@ -22,7 +22,7 @@ class Api {
 
     //получаем информацию пользователя
     getUserInfo() {
-        return fetch('back.kachur.nomoreparties.sbs/users/me', {
+        return fetch('http://back.kachur.nomoreparties.sbs/users/me', {
             method: 'GET',
             headers: this._headers
         })
@@ -39,7 +39,7 @@ class Api {
             }),
 
         }
-        return fetch(`back.kachur.nomoreparties.sbs/users/me/avatar`, newConfing)
+        return fetch(`http://back.kachur.nomoreparties.sbs/users/me/avatar`, newConfing)
             .then(this._checkError);
     }
 
@@ -49,7 +49,7 @@ class Api {
             headers: this._headers,
             method: 'DELETE',
         }
-        return fetch(`back.kachur.nomoreparties.sbs/cards/${cardId}`, newConfing)
+        return fetch(`http://back.kachur.nomoreparties.sbs/cards/${cardId}`, newConfing)
             .then(this._checkError);
     }
 
@@ -64,7 +64,7 @@ class Api {
             headers: this._headers,
             method: 'DELETE',
         }
-        return fetch(`back.kachur.nomoreparties.sbs/cards/likes/${cardId}`, isLiked ? deleteLike : updateLike)
+        return fetch(`http://back.kachur.nomoreparties.sbs/cards/likes/${cardId}`, isLiked ? deleteLike : updateLike)
             .then(this._checkError);
     }
 
@@ -75,7 +75,7 @@ class Api {
             headers: this._headers,
             body: JSON.stringify(userData),
         }
-        return fetch('back.kachur.nomoreparties.sbs/users/me', newConfing)
+        return fetch('http://back.kachur.nomoreparties.sbs/users/me', newConfing)
             .then(this._checkError);
     }
 
@@ -87,16 +87,15 @@ class Api {
             body: JSON.stringify(inputsValue),
 
         }
-        return fetch('back.kachur.nomoreparties.sbs/cards', newConfing)
+        return fetch('http://back.kachur.nomoreparties.sbs/cards', newConfing)
             .then(this._checkError);
     }
 }
 
 export default new Api({
-    baseUrl: `back.kachur.nomoreparties.sbs`,
+    baseUrl: `http://back.kachur.nomoreparties.sbs`,
     headers: {
-        authorization: '5f5add00-d466-4f85-8d24-2991878e59c1',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
     }
 });
 
