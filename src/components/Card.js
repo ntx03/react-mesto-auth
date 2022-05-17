@@ -9,7 +9,7 @@ const Card = ({ card, onEditPopupImage, onCardLike, onCardDelete }) => {
     }
 
     // Определяем, являемся ли мы владельцем текущей карточки
-    const isOwn = card.owner._id === user._id;
+    const isOwn = card.owner === user._id;
 
     // Создаём переменную, которую после зададим в `className` для кнопки удаления
     const cardDeleteButtonClassName = (

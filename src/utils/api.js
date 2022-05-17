@@ -1,6 +1,7 @@
 class Api {
-    constructor(confing) {
-        this._headers = confing.headers
+    constructor(config) {
+        this._headers = config.headers
+        console.log(this._headers);
     }
 
     _checkError(res) {
@@ -14,7 +15,7 @@ class Api {
     getInitialCards() {
         return fetch('http://back.kachur.nomoreparties.sbs/cards', {
             method: 'GET',
-            headers: this._headers
+            headers: this._headers,
         })
             .then(this._checkError);
     }
@@ -24,7 +25,7 @@ class Api {
     getUserInfo() {
         return fetch('http://back.kachur.nomoreparties.sbs/users/me', {
             method: 'GET',
-            headers: this._headers
+            headers: this._headers,
         })
             .then(this._checkError);
     }
@@ -49,7 +50,7 @@ class Api {
             headers: this._headers,
             method: 'DELETE',
         }
-        return fetch(`http://back.kachur.nomoreparties.sbs/cards/${cardId}`, newConfing)
+        return fetch(`http://back.kachur.nomoreparties.sbs/${cardId}/likes`, newConfing)
             .then(this._checkError);
     }
 
@@ -64,7 +65,7 @@ class Api {
             headers: this._headers,
             method: 'DELETE',
         }
-        return fetch(`http://back.kachur.nomoreparties.sbs/cards/likes/${cardId}`, isLiked ? deleteLike : updateLike)
+        return fetch(`http://back.kachur.nomoreparties.sbs/cards/${cardId}/likes`, isLiked ? deleteLike : updateLike)
             .then(this._checkError);
     }
 
@@ -79,7 +80,7 @@ class Api {
             .then(this._checkError);
     }
 
-    //отправляем информацию о фото и пользователе на сервер
+    //создаем новую карточку
     patchCard(inputsValue) {
         const newConfing = {
             method: 'POST',
@@ -96,6 +97,7 @@ export default new Api({
     baseUrl: `http://back.kachur.nomoreparties.sbs`,
     headers: {
         'Content-Type': 'application/json',
+        'authorization': `Bearer ${localStorage.getItem('token')}`,
     }
 });
 

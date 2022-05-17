@@ -55,8 +55,8 @@ function App() {
     () => {
       if (loggedIn) {
         api.getUserInfo()
-          .then((data) => {
-            setCurrentUser(data)
+          .then((item) => {
+            setCurrentUser(item)
           })
           .catch(e => console.log(e))
         api.getInitialCards()
@@ -117,7 +117,7 @@ function App() {
   const handleUpdateUser = (userData) => {
     api.patchProfileInfo(userData)
       .then((data) => {
-        setCurrentUser(data)
+        setCurrentUser(data.data) // !!!
         closeAllPopups()
       })
       .catch(err => console.log(err));
