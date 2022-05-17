@@ -17,7 +17,7 @@ const Card = ({ card, onEditPopupImage, onCardLike, onCardDelete }) => {
     );
 
     // Определяем, есть ли у карточки лайк, поставленный текущим пользователем
-    const isLiked = card.likes.some(i => i._id === user._id);
+    const isLiked = card.likes.some(i => i === user._id);
 
     // Создаём переменную, которую после зададим в `className` для кнопки лайка
     const cardLikeButtonClassName = (`card__heart ${isLiked ? 'card__heart_like' : ''}`);

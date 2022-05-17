@@ -12,7 +12,7 @@ class Api {
 
     //получаем список всех карточек
     getInitialCards() {
-        return fetch('http://back.kachur.nomoreparties.sbs/cards', {
+        return fetch('https://back.kachur.nomoreparties.sbs/cards', {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -25,7 +25,7 @@ class Api {
 
     //получаем информацию пользователя
     getUserInfo() {
-        return fetch('http://back.kachur.nomoreparties.sbs/users/me', {
+        return fetch('https://back.kachur.nomoreparties.sbs/users/me', {
             method: 'GET',
             headers: {
                 'authorization': `Bearer ${localStorage.getItem('token')}`,
@@ -45,7 +45,7 @@ class Api {
             }),
 
         }
-        return fetch(`http://back.kachur.nomoreparties.sbs/users/me/avatar`, newConfing)
+        return fetch(`https://back.kachur.nomoreparties.sbs/users/me/avatar`, newConfing)
             .then(this._checkError);
     }
 
@@ -58,7 +58,7 @@ class Api {
             },
             method: 'DELETE',
         }
-        return fetch(`http://back.kachur.nomoreparties.sbs/cards/${cardId}`, newConfing)
+        return fetch(`https://back.kachur.nomoreparties.sbs/cards/${cardId}`, newConfing)
             .then(this._checkError);
     }
 
@@ -79,7 +79,7 @@ class Api {
             },
             method: 'DELETE',
         }
-        return fetch(`http://back.kachur.nomoreparties.sbs/cards/${cardId}/likes`, isLiked ? deleteLike : updateLike)
+        return fetch(`https://back.kachur.nomoreparties.sbs/cards/${cardId}/likes`, isLiked ? deleteLike : updateLike)
             .then(this._checkError);
     }
 
@@ -93,7 +93,7 @@ class Api {
             },
             body: JSON.stringify(userData),
         }
-        return fetch('http://back.kachur.nomoreparties.sbs/users/me', newConfing)
+        return fetch('https://back.kachur.nomoreparties.sbs/users/me', newConfing)
             .then(this._checkError);
     }
 
@@ -108,13 +108,13 @@ class Api {
             body: JSON.stringify(inputsValue),
 
         }
-        return fetch('http://back.kachur.nomoreparties.sbs/cards', newConfing)
+        return fetch('https://back.kachur.nomoreparties.sbs/cards', newConfing)
             .then(this._checkError);
     }
 }
 
 export default new Api({
-    baseUrl: `http://back.kachur.nomoreparties.sbs`,
+    baseUrl: `https://back.kachur.nomoreparties.sbs`,
     headers: {
         'Content-Type': 'application/json',
         'authorization': `Bearer ${localStorage.getItem('token')}`,
