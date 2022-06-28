@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://back.kachur.nomoreparties.sbs';
+export const BASE_URL = 'https://back.mesto.nomoredomains.xyz';
 
 export const register = (password, email) => {
     return fetch(`${BASE_URL}/signup`, {
